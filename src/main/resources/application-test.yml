@@ -1,0 +1,48 @@
+server:
+  servlet:
+    encoding:
+      force: true
+    
+spring:
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp
+    pathmatch:
+      matching-strategy: ant_path_matcher
+
+  datasource:
+    url: jdbc:h2:mem:test;MODE=MySQL
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+    
+  jpa:
+    open-in-view: true
+    hibernate:
+      ddl-auto: create #서버 재실행해도 데이터 유지 // create, update, none(실제 production 모드에서 사용)
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    show-sql: true
+
+  servlet:
+    multipart:
+      enabled: true # multipart타입으로 사진을 받음
+      max-file-size: 2MB
+
+  security:
+    user:
+      name: test
+      password: 1234
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 652484648096-721bf8vbrpvffd9qg3i7585d6osqtl1d.apps.googleusercontent.com
+            client-secret: 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
+            scope:
+              - profile
+              - email
+
+file:
+  path: C:/Users/박용현/Desktop/ingram/upload/ # 끝에 '/' 가 있어야 뒤에 붙는 파일명을 인식

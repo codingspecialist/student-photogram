@@ -13,10 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
@@ -48,7 +45,7 @@ public class UserApiController {
     @PutMapping("/api/user/{id}")
     public CMResponseDto<?> update(
             @PathVariable Long id,
-            @Valid UserUpdateDto updateDto,
+            @Valid @RequestBody UserUpdateDto updateDto,
             BindingResult bindingResult,
             @AuthenticationPrincipal PrincipalDetails principalDetails) {
 
